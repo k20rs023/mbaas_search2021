@@ -27,7 +27,16 @@
     function searchName() {
       let TestDataClass = ncmb.DataStore(db);
       let name = $("#name").val();
-      TestDataClass.regularExpressionTo("name", name).fetchAll()
+      TestDataClass.equalTo("name", name).fetchAll()
+        .then(function(results) {
+          showResults(results);
+        })
+    }
+
+    function searchLevel() {
+      let TestDataClass = ncmb.DataStore(db);
+      let level = parseInt($("#level").val());
+      TestDataClass.equalTo("level", level).fetchAll()
         .then(function(results) {
           showResults(results);
         })
