@@ -24,9 +24,9 @@
         })
     }
 
-    function searchObject1() {
+    function searchName() {
       let TestDataClass = ncmb.DataStore(db);
-      let name = $("#countryname").val();
+      let name = $("#name").val();
       TestDataClass.regularExpressionTo("countryname", name).fetchAll()
         .then(function(results) {
           showResults(results);
@@ -62,14 +62,14 @@
 
     function showResults(results) {
       // テーブルのヘッダを生成
-      let msg = "<table><tr><th>名前</th><th>レベル</th><th>アタック</th><th>ディフェンス</th></tr>";
+      let msg = "<table><tr><th>名前</th><th>面積(km^2)</th><th>地域</th><th>公用語</th></tr>";
       for (let i = 0; i < results.length; i++) {
         // 各データを収めた表の列を生成
         msg += "<tr>";
-        msg += "<td>" + results[i].name + "</td>";
-        msg += "<td class='num'>" + results[i].level + "</td>";
-        msg += "<td class='num'>" + results[i].attack + "</td>";
-        msg += "<td class='num'>" + results[i].defence + "</td>";
+        msg += "<td>" + results[i].countryname + "</td>";
+        msg += "<td class='num'>" + results[i].countryarea + "</td>";
+        msg += "<td class='num'>" + results[i].countryregion + "</td>";
+        msg += "<td class='num'>" + results[i].countrylenguage + "</td>";
         msg += "</tr>";
       }
       // テーブルのテイラを生成
