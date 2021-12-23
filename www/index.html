@@ -42,28 +42,28 @@
         })
     }
 
-    function searchLevel() {
+    function searchLanguage() {
       let TestDataClass = ncmb.DataStore(db);
-      let level = parseInt($("#level").val());
-      TestDataClass.equalTo("level", level).fetchAll()
+      let language = $("#language").val();
+      TestDataClass.regularExpressionTo("countrylanguage", language).fetchAll()
         .then(function(results) {
           showResults(results);
         })
     }
 
-    function searchLevelLT() {
+    function searchAreaLT() {
       let TestDataClass = ncmb.DataStore(db);
-      let level = parseInt($("#level").val());
-      TestDataClass.lessThan("level", level).fetchAll()
+      let area = parseInt($("#area").val());
+      TestDataClass.lessThan("area", area).fetchAll()
         .then(function(results) {
           showResults(results);
         })
     }
 
-    function searchLevelGT() {
+    function searchAreaGT() {
       let TestDataClass = ncmb.DataStore(db);
-      let level = parseInt($("#level").val());
-      TestDataClass.greaterThan("level", level).fetchAll()
+      let area = parseInt($("#area").val());
+      TestDataClass.greaterThan("area", area).fetchAll()
         .then(function(results) {
           showResults(results);
         })
@@ -95,15 +95,15 @@
     <input id="name" type="text" placeholder="例:「日本」">
   </div>
   <label for="region">地域:</label>
-  <input id="region" type="text" placeholder="例:”「東アジア」">
+  <input id="region" type="text" placeholder="例:「東アジア」">
   </div>
   </div>
   <label for="language">公用語:</label>
   <input id="language" type="text" placeholder="例：「日本語」">
   </div>
   <div>
-    <label for="level">面積:</label>
-    <input id="level" type="number" placeholder="例：「370000」">
+    <label for="area">面積:</label>
+    <input id="area" type="number" placeholder="例：「370000」">
   </div>
   <div id="button">
     <button class="btn" onclick="fetchAll()">国リスト</button>
@@ -115,8 +115,8 @@
     <button class="btn" onclick="searchLanguage()">公用語</button>
 
     <br>
-    <button class="btn" onclick="searchLevelLT()">&lt 面積</button>
-    <button class="btn" onclick="searchLevelGT()">面積 &gt</button>
+    <button class="btn" onclick="searchAreaLT()">&lt 面積</button>
+    <button class="btn" onclick="searchAreaGT()">面積 &gt</button>
   </div>
   <div id="message">message area</div>
 </body>
