@@ -62,14 +62,14 @@
 
     function showResults(results) {
       // テーブルのヘッダを生成
-      let msg = "<table><tr><th>名前</th><th>面積(km²)</th><th>地域</th><th>公用語</th></tr>";
+      let msg = "<table><tr><th>名前</th><th>地域</th><th>公用語</th><th>面積(km²)</th></tr>";
       for (let i = 0; i < results.length; i++) {
         // 各データを収めた表の列を生成
         msg += "<tr>";
         msg += "<td>" + results[i].countryname + "</td>";
-        msg += "<td class='num'>" + results[i].countryarea + "</td>";
         msg += "<td class='num'>" + results[i].countryregion + "</td>";
         msg += "<td class='num'>" + results[i].countrylanguage + "</td>";
+        msg += "<td class='num'>" + results[i].countryarea + "</td>";
         msg += "</tr>";
       }
       // テーブルのテイラを生成
@@ -85,10 +85,6 @@
     <label for="name">名前:</label>
     <input id="name" type="text" placeholder="Country name">
   </div>
-  <div>
-    <label for="level">面積:</label>
-    <input id="level" type="number" placeholder="Country area">
-  </div>
     <label for="region">地域:</label>
     <input id="region" type="text" placeholder="Country region">
   </div>
@@ -96,8 +92,12 @@
     <label for="language">公用語:</label>
     <input id="language" type="text" placeholder="Country language">
   </div>
+  <div>
+    <label for="level">面積:</label>
+    <input id="level" type="number" placeholder="Country area">
+  </div>
   <div id="button">
-    <button class="btn" onclick="fetchAll()">Fetch All</button>
+    <button class="btn" onclick="fetchAll()">国リスト</button>
     <br>
   
     <button class="btn" onclick="searchName()">名前
