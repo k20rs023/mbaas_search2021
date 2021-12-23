@@ -82,26 +82,32 @@
 <body>
   <h1>mBaaS search</h1>
   <div>
-    <label for="name">name:</label>
-    <input id="name" type="text" placeholder="monster name">
+    <label for="name">名前:</label>
+    <input id="name" type="text" placeholder="Country name">
   </div>
   <div>
-    <label for="level">level:</label>
-    <input id="level" type="number" placeholder="monster level">
+    <label for="level">面積:</label>
+    <input id="level" type="number" placeholder="Country area">
   </div>
-    <label for="texttest">texttest:</label>
-    <input id="texttest" type="text" placeholder="monster texttest">
+    <label for="region">地域:</label>
+    <input id="region" type="text" placeholder="Country region">
+  </div>
+   </div>
+    <label for="language">公用語:</label>
+    <input id="language" type="text" placeholder="Country language">
   </div>
   <div id="button">
     <button class="btn" onclick="fetchAll()">Fetch All</button>
     <br>
-    <button class="btn" onclick="searchLevelLT()">Level &lt;</button>
-    <button class="btn" onclick="searchLevel()">Level</button>
-    <button class="btn" onclick="searchLevelGT()">Level &gt;</button>
-    <button class="btn" onclick="searchObject1()">名前
+  
+    <button class="btn" onclick="searchName()">名前
     </button>
-    <button class="btn" onclick="searchObject2()">地域</button>
-    <button class="btn" onclick="searchObject3()">言語</button>
+    <button class="btn" onclick="searchRegion()">地域</button>
+    <button class="btn" onclick="searchLanguage()">公用語</button>
+    
+    <br>
+      <button class="btn" onclick="searchLevelLT()">&lt 面積</button>
+    <button class="btn" onclick="searchLevelGT()">面積 &gt</button>
   </div>
   <div id="message">message area</div>
 </body>
