@@ -33,6 +33,15 @@
         })
     }
 
+    function searchRegion() {
+      let TestDataClass = ncmb.DataStore(db);
+      let region = $("#region").val();
+      TestDataClass.regularExpressionTo("countryregion", region).fetchAll()
+        .then(function(results) {
+          showResults(results);
+        })
+    }
+
     function searchLevel() {
       let TestDataClass = ncmb.DataStore(db);
       let level = parseInt($("#level").val());
@@ -85,12 +94,12 @@
     <label for="name">名前:</label>
     <input id="name" type="text" placeholder="Country name">
   </div>
-    <label for="region">地域:</label>
-    <input id="region" type="text" placeholder="Country region">
+  <label for="region">地域:</label>
+  <input id="region" type="text" placeholder="Country region">
   </div>
-   </div>
-    <label for="language">公用語:</label>
-    <input id="language" type="text" placeholder="Country language">
+  </div>
+  <label for="language">公用語:</label>
+  <input id="language" type="text" placeholder="Country language">
   </div>
   <div>
     <label for="level">面積:</label>
@@ -99,14 +108,14 @@
   <div id="button">
     <button class="btn" onclick="fetchAll()">国リスト</button>
     <br>
-  
+
     <button class="btn" onclick="searchName()">名前
     </button>
     <button class="btn" onclick="searchRegion()">地域</button>
     <button class="btn" onclick="searchLanguage()">公用語</button>
-    
+
     <br>
-      <button class="btn" onclick="searchLevelLT()">&lt 面積</button>
+    <button class="btn" onclick="searchLevelLT()">&lt 面積</button>
     <button class="btn" onclick="searchLevelGT()">面積 &gt</button>
   </div>
   <div id="message">message area</div>
