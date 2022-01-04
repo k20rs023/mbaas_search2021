@@ -115,7 +115,8 @@
 </head>
 
 <body>
-  <h1>mBaaS search</h1>
+  <h1>国名検索システム</h1>
+  <h2>入力欄（部分一致）</h2>
   <div>
     <label for="name">名前:</label>
     <input id="name" type="text" placeholder="例：「日本」">
@@ -135,22 +136,23 @@
     <label for="gdp">GDPランク:</label>
     <input id="gdp" type="text" placeholder="例：「3」">
   </div>
+  <br><br>
   <div id="button">
-    <button class="btn" onclick="fetchAll()">国リスト</button>
+    <button class="btn2" onclick="fetchAll()">🎌国リスト🎌</button>
     <br>
+    <h3>検索ボタン一覧</h3>
+    <button class="btn" onclick="searchName()">名前検索</button>
+    <button class="btn" onclick="searchRegion()">地域検索</button>
+    <button class="btn" onclick="searchLanguage()">公用語検索</button>
 
-    <button class="btn" onclick="searchName()">名前</button>
-    <button class="btn" onclick="searchRegion()">地域</button>
-    <button class="btn" onclick="searchLanguage()">公用語</button>
-
     <br>
-    <button class="btn" onclick="searchAreaLT()">&lt 面積</button>
+    <button class="btn" onclick="searchAreaLT()">&lt 面積🔍</button>
     　
-    <button class="btn" onclick="searchAreaGT()">面積 &gt</button>
+    <button class="btn" onclick="searchAreaGT()">面積🔎 &gt</button>
     <br>
-    <button class="btn" onclick="searchGDPLT()">&lt GDP</button>
+    <button class="btn" onclick="searchGDPLT()">&lt GDP🔍</button>
     　
-    <button class="btn" onclick="searchGDPGT()">GDP &gt</button>
+    <button class="btn" onclick="searchGDPGT()">GDP🔎 &gt</button>
   </div>
   <div id="message">message area</div>
 </body>
