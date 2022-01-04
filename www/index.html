@@ -54,7 +54,7 @@
     function searchAreaLT() {
       let TestDataClass = ncmb.DataStore(db);
       let area = parseInt($("#area").val());
-      TestDataClass.lessThan("area", area).fetchAll()
+      TestDataClass.lessThanOrEqualTo("countryarea", area).fetchAll()
         .then(function(results) {
           showResults(results);
         })
@@ -63,7 +63,7 @@
     function searchAreaGT() {
       let TestDataClass = ncmb.DataStore(db);
       let area = parseInt($("#area").val());
-      TestDataClass.greaterThan("area", area).fetchAll()
+      TestDataClass.greaterThanOrEqualTo("countryarea", area).fetchAll()
         .then(function(results) {
           showResults(results);
         })
