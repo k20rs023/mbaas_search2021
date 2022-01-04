@@ -27,7 +27,8 @@
     function searchName() {
       let TestDataClass = ncmb.DataStore(db);
       let name = $("#name").val();
-      TestDataClass.regularExpressionTo("countryname", name).fetchAll()
+      TestDataClass.regularExpressionTo("countryname", name)
+        .order("countrygdp", false).fetchAll()
         .then(function(results) {
           showResults(results);
         })
@@ -36,7 +37,7 @@
     function searchRegion() {
       let TestDataClass = ncmb.DataStore(db);
       let region = $("#region").val();
-      TestDataClass.regularExpressionTo("countryregion", region).fetchAll()
+      TestDataClass.regularExpressionTo("countryregion", region).order("countrygdp", false).fetchAll()
         .then(function(results) {
           showResults(results);
         })
@@ -45,7 +46,7 @@
     function searchLanguage() {
       let TestDataClass = ncmb.DataStore(db);
       let language = $("#language").val();
-      TestDataClass.regularExpressionTo("countrylanguage", language).fetchAll()
+      TestDataClass.regularExpressionTo("countrylanguage", language).order("countrygdp", false).fetchAll()
         .then(function(results) {
           showResults(results);
         })
@@ -54,7 +55,8 @@
     function searchAreaLT() {
       let TestDataClass = ncmb.DataStore(db);
       let area = parseInt($("#area").val());
-      TestDataClass.lessThanOrEqualTo("countryarea", area).fetchAll()
+      TestDataClass.lessThanOrEqualTo("countryarea", area)
+      .order("countrygdp", false).fetchAll()
         .then(function(results) {
           showResults(results);
         })
@@ -63,7 +65,25 @@
     function searchAreaGT() {
       let TestDataClass = ncmb.DataStore(db);
       let area = parseInt($("#area").val());
-      TestDataClass.greaterThanOrEqualTo("countryarea", area).fetchAll()
+      TestDataClass.greaterThanOrEqualTo("countryarea", area).order("countrygdp", false).fetchAll()
+        .then(function(results) {
+          showResults(results);
+        })
+    }
+
+     function searchGDPLT() {
+      let TestDataClass = ncmb.DataStore(db);
+      let gdp = parseInt($("#gdp").val());
+      TestDataClass.lessThanOrEqualTo("countrygdp", gdp).order("countrygdp", false).fetchAll()
+        .then(function(results) {
+          showResults(results);
+        })
+    }
+
+    function searchGDPGT() {
+      let TestDataClass = ncmb.DataStore(db);
+      let gdp = parseInt($("#gdp").val());
+      TestDataClass.greaterThanOrEqualTo("countrygdp", gdp).order("countrygdp", false).fetchAll()
         .then(function(results) {
           showResults(results);
         })
@@ -107,8 +127,8 @@
     <input id="area" type="number" placeholder="例：「370000」">
   </div>
   <div>
-    <label for="name">GDPランク:</label>
-    <input id="name" type="text" placeholder="例：「3」">
+    <label for="gdp">GDPランク:</label>
+    <input id="gdp" type="text" placeholder="例：「3」">
   </div>
   <div id="button">
     <button class="btn" onclick="fetchAll()">国リスト</button>
@@ -123,8 +143,8 @@
     <button class="btn" onclick="searchAreaLT()">&lt 面積</button>
     <button class="btn" onclick="searchAreaGT()">面積 &gt</button>
     <br>
-    <button class="btn" onclick="searchAreaLT()">&lt GDP</button>
-    <button class="btn" onclick="searchAreaGT()">GDP &gt</button>
+    <button class="btn" onclick="searchGDPLT()">&lt GDP</button>
+    <button class="btn" onclick="searchGDPGT()">GDP &gt</button>
   </div>
   <div id="message">message area</div>
 </body>
