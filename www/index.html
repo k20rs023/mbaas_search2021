@@ -13,7 +13,7 @@
     // NCMB アクセスの準備
     let ncmb = new NCMB(appKey, clientKey);
     // 本アプリで使うクラスの指定。const は定数の宣言。変更できない変数と思えば良い。
-    const db = "m";
+    const db = "country50";
 
     function fetchAll() {
       let TestDataClass = ncmb.DataStore(db);
@@ -37,7 +37,8 @@
     function searchRegion() {
       let TestDataClass = ncmb.DataStore(db);
       let region = $("#region").val();
-      TestDataClass.regularExpressionTo("countryregion", region).order("countrygdp", false).fetchAll()
+      TestDataClass.regularExpressionTo("countryregion", region)
+      .order("countrygdp", false).fetchAll()
         .then(function(results) {
           showResults(results);
         })
@@ -46,7 +47,8 @@
     function searchLanguage() {
       let TestDataClass = ncmb.DataStore(db);
       let language = $("#language").val();
-      TestDataClass.regularExpressionTo("countrylanguage", language).order("countrygdp", false).fetchAll()
+      TestDataClass.regularExpressionTo("countrylanguage", language)
+      .order("countrygdp", false).fetchAll()
         .then(function(results) {
           showResults(results);
         })
@@ -56,7 +58,7 @@
       let TestDataClass = ncmb.DataStore(db);
       let area = parseInt($("#area").val());
       TestDataClass.lessThanOrEqualTo("countryarea", area)
-      .order("countrygdp", false).fetchAll()
+      .order("countryarea", false).fetchAll()
         .then(function(results) {
           showResults(results);
         })
@@ -65,7 +67,8 @@
     function searchAreaGT() {
       let TestDataClass = ncmb.DataStore(db);
       let area = parseInt($("#area").val());
-      TestDataClass.greaterThanOrEqualTo("countryarea", area).order("countrygdp", false).fetchAll()
+      TestDataClass.greaterThanOrEqualTo("countryarea", area)
+      .order("countryarea", false).fetchAll()
         .then(function(results) {
           showResults(results);
         })
@@ -74,7 +77,8 @@
      function searchGDPLT() {
       let TestDataClass = ncmb.DataStore(db);
       let gdp = parseInt($("#gdp").val());
-      TestDataClass.lessThanOrEqualTo("countrygdp", gdp).order("countrygdp", false).fetchAll()
+      TestDataClass.lessThanOrEqualTo("countrygdp", gdp)
+      .order("countrygdp", false).fetchAll()
         .then(function(results) {
           showResults(results);
         })
@@ -83,7 +87,8 @@
     function searchGDPGT() {
       let TestDataClass = ncmb.DataStore(db);
       let gdp = parseInt($("#gdp").val());
-      TestDataClass.greaterThanOrEqualTo("countrygdp", gdp).order("countrygdp", false).fetchAll()
+      TestDataClass.greaterThanOrEqualTo("countrygdp", gdp)
+      .order("countrygdp", false).fetchAll()
         .then(function(results) {
           showResults(results);
         })
@@ -91,15 +96,15 @@
 
     function showResults(results) {
       // テーブルのヘッダを生成
-      let msg = "<table><tr><th>名前</th><th>地域</th><th>公用語</th><th>面積(km²)</th><th>GDPランク</th></tr>";
+      let msg = "<table><tr><th>GDP<br>Rank</th><th>名前</th><th>地域</th><th>公用語</th><th>面積<br>(km²)</th></tr>";
       for (let i = 0; i < results.length; i++) {
         // 各データを収めた表の列を生成
         msg += "<tr>";
+        msg += "<td class='num'>" + results[i].countrygdp + "</td>";
         msg += "<td>" + results[i].countryname + "</td>";
         msg += "<td class='num'>" + results[i].countryregion + "</td>";
         msg += "<td class='num'>" + results[i].countrylanguage + "</td>";
         msg += "<td class='num'>" + results[i].countryarea + "</td>";
-        msg += "<td class='num'>" + results[i].countrygdp + "</td>";
         msg += "</tr>";
       }
       // テーブルのテイラを生成
@@ -134,16 +139,17 @@
     <button class="btn" onclick="fetchAll()">国リスト</button>
     <br>
 
-    <button class="btn" onclick="searchName()">名前
-    </button>
+    <button class="btn" onclick="searchName()">名前</button>
     <button class="btn" onclick="searchRegion()">地域</button>
     <button class="btn" onclick="searchLanguage()">公用語</button>
 
     <br>
     <button class="btn" onclick="searchAreaLT()">&lt 面積</button>
+    　
     <button class="btn" onclick="searchAreaGT()">面積 &gt</button>
     <br>
     <button class="btn" onclick="searchGDPLT()">&lt GDP</button>
+    　
     <button class="btn" onclick="searchGDPGT()">GDP &gt</button>
   </div>
   <div id="message">message area</div>
