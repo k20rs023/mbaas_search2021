@@ -18,7 +18,7 @@
     function fetchAll() {
       let TestDataClass = ncmb.DataStore(db);
       let input = $("#city").val();
-      TestDataClass.order("countryname", false).fetchAll()
+      TestDataClass.order("countrygdp", false).fetchAll()
         .then(function(results) {
           showResults(results);
         })
@@ -71,7 +71,7 @@
 
     function showResults(results) {
       // テーブルのヘッダを生成
-      let msg = "<table><tr><th>名前</th><th>地域</th><th>公用語</th><th>面積(km²)</th></tr>";
+      let msg = "<table><tr><th>名前</th><th>地域</th><th>公用語</th><th>面積(km²)</th><th>GDPランク</th></tr>";
       for (let i = 0; i < results.length; i++) {
         // 各データを収めた表の列を生成
         msg += "<tr>";
@@ -79,6 +79,7 @@
         msg += "<td class='num'>" + results[i].countryregion + "</td>";
         msg += "<td class='num'>" + results[i].countrylanguage + "</td>";
         msg += "<td class='num'>" + results[i].countryarea + "</td>";
+        msg += "<td class='num'>" + results[i].countrygdp + "</td>";
         msg += "</tr>";
       }
       // テーブルのテイラを生成
@@ -92,10 +93,10 @@
   <h1>mBaaS search</h1>
   <div>
     <label for="name">名前:</label>
-    <input id="name" type="text" placeholder="例:「日本」">
+    <input id="name" type="text" placeholder="例：「日本」">
   </div>
   <label for="region">地域:</label>
-  <input id="region" type="text" placeholder="例:「東アジア」">
+  <input id="region" type="text" placeholder="例：「東アジア」">
   </div>
   </div>
   <label for="language">公用語:</label>
@@ -104,6 +105,10 @@
   <div>
     <label for="area">面積:</label>
     <input id="area" type="number" placeholder="例：「370000」">
+  </div>
+  <div>
+    <label for="name">GDPランク:</label>
+    <input id="name" type="text" placeholder="例：「3」">
   </div>
   <div id="button">
     <button class="btn" onclick="fetchAll()">国リスト</button>
@@ -117,6 +122,9 @@
     <br>
     <button class="btn" onclick="searchAreaLT()">&lt 面積</button>
     <button class="btn" onclick="searchAreaGT()">面積 &gt</button>
+    <br>
+    <button class="btn" onclick="searchAreaLT()">&lt GDP</button>
+    <button class="btn" onclick="searchAreaGT()">GDP &gt</button>
   </div>
   <div id="message">message area</div>
 </body>

@@ -1,9 +1,11 @@
 /**/
 body {
   background-color:wheat;
+  font-size: 10pt;
 }
 h1 {
   background-color: skyblue;
+  
 }
 
 label {
@@ -19,13 +21,13 @@ input {
 
 #button {
   text-align: center;
-  font-size: 13pt;
+  font-size: 10pt;
 }
 
 .btn {
   margin-top: 10px;
   margin-bottom: 10px;
-  font-size: 16pt;
+  font-size: 14pt;
   height: 4ex;
   width: 5em;
   border-radius: 10px;
