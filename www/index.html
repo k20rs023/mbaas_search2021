@@ -16,7 +16,7 @@
     const db = "country50";
     var list_n, name_n, regi_n, lang_n, arealt_n, areagt_n, gdplt_n, gdpgt_n = 0;
 
-    function fetchAll() {
+    function reset() {
       list_n,
       name_n,
       regi_n,
@@ -24,155 +24,110 @@
       arealt_n,
       areagt_n,
       gdplt_n,
-      gdpgt_n = 0;
+      gdpgt_n = 2;
+    }
+
+    function fetchAll() {
+      reset();
       list_n = 1;
 
       let TestDataClass = ncmb.DataStore(db);
       let input = $("#city").val();
       TestDataClass.order("countrygdp", false).fetchAll()
-      .then(function(results) {
-        showResults(results);
-      })
+        .then(function(results) {
+          showResults(results);
+        })
     }
 
     function searchName() {
-      list_n,
-      name_n,
-      regi_n,
-      lang_n,
-      arealt_n,
-      areagt_n,
-      gdplt_n,
-      gdpgt_n = 0;
+      reset();
       name_n = 1;
 
       let TestDataClass = ncmb.DataStore(db);
       let name = $("#name").val();
       TestDataClass.regularExpressionTo("countryname", name)
-      .order("countryname", false).fetchAll()
-      .then(function(results) {
-        showResults(results);
-      })
+        .order("countryname", false).fetchAll()
+        .then(function(results) {
+          showResults(results);
+        })
     }
 
     function searchRegion() {
-      list_n,
-      name_n,
-      regi_n,
-      lang_n,
-      arealt_n,
-      areagt_n,
-      gdplt_n,
-      gdpgt_n = 0;
+      reset();
       regi_n = 1;
 
       let TestDataClass = ncmb.DataStore(db);
       let region = $("#region").val();
       TestDataClass.regularExpressionTo("countryregion", region)
-      .order("countryregion", false).fetchAll()
-      .then(function(results) {
-        showResults(results);
-      })
+        .order("countryregion", false).fetchAll()
+        .then(function(results) {
+          showResults(results);
+        })
     }
 
     function searchLanguage() {
-      list_n,
-      name_n,
-      regi_n,
-      lang_n,
-      arealt_n,
-      areagt_n,
-      gdplt_n,
-      gdpgt_n = 0;
+      reset();
       lang_n = 1;
 
       let TestDataClass = ncmb.DataStore(db);
       let language = $("#language").val();
       TestDataClass.regularExpressionTo("countrylanguage", language)
-      .order("countrygdp", false).fetchAll()
-      .then(function(results) {
-        showResults(results);
-      })
+        .order("countrygdp", false).fetchAll()
+        .then(function(results) {
+          showResults(results);
+        })
     }
 
     function searchAreaLT() {
-      list_n,
-      name_n,
-      regi_n,
-      lang_n,
-      arealt_n,
-      areagt_n,
-      gdplt_n,
-      gdpgt_n = 0;
+      reset();
       arealt_n = 1;
 
       let TestDataClass = ncmb.DataStore(db);
       let area = parseInt($("#area").val());
       TestDataClass.lessThanOrEqualTo("countryarea", area)
-      .order("countryarea", false).fetchAll()
-      .then(function(results) {
-        showResults(results);
-      })
+        .order("countryarea", false).fetchAll()
+        .then(function(results) {
+          showResults(results);
+        })
     }
 
     function searchAreaGT() {
-      list_n,
-      name_n,
-      regi_n,
-      lang_n,
-      arealt_n,
-      areagt_n,
-      gdplt_n,
-      gdpgt_n = 0;
+      reset();
       areagt_n = 1;
 
       let TestDataClass = ncmb.DataStore(db);
       let area = parseInt($("#area").val());
       TestDataClass.greaterThanOrEqualTo("countryarea", area)
-      .order("countryarea", false).fetchAll()
-      .then(function(results) {
-        showResults(results);
-      })
+        .order("countryarea", false).fetchAll()
+        .then(function(results) {
+          showResults(results);
+        })
     }
 
     function searchGDPLT() {
-      list_n,
-      name_n,
-      regi_n,
-      lang_n,
-      arealt_n,
-      areagt_n,
-      gdplt_n,
-      gdpgt_n = 0;
+      reset();
       gdplt_n = 1;
 
       let TestDataClass = ncmb.DataStore(db);
       let gdp = parseInt($("#gdp").val());
       TestDataClass.lessThanOrEqualTo("countrygdp", gdp)
-      .order("countrygdp", false).fetchAll()
-      .then(function(results) {
-        showResults(results);
-      })
+        .order("countrygdp", false).fetchAll()
+        .then(function(results) {
+          showResults(results);
+        })
     }
 
     function searchGDPGT() {
-      list_n,
-      name_n,
-      regi_n,
-      lang_n,
-      arealt_n,
-      areagt_n,
-      gdplt_n,
-      gdpgt_n = 0;
+      reset();
       gdpgt_n = 1;
 
       let TestDataClass = ncmb.DataStore(db);
       let gdp = parseInt($("#gdp").val());
       TestDataClass.greaterThanOrEqualTo("countrygdp", gdp)
-      .order("countrygdp", false).fetchAll()
-      .then(function(results) {
-        showResults(results);
-      })
+        .order("countrygdp", false).fetchAll()
+        .then(function(results) {
+          showResults(results);
+        })
     }
 
     function sortAscending() {
@@ -212,6 +167,7 @@
     }
 
     function sortDescending() {
+      sortAscending();
       if (list_n == 0) {
         let TestDataClass = ncmb.DataStore(db);
         let input = $("#city").val();
@@ -292,8 +248,8 @@
         gdpgt_n = 1;
       }
 
-
     }
+
 
     function showResults(results) {
       // テーブルのヘッダを生成
