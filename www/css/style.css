@@ -8,6 +8,8 @@ body {
 h1 {
   background-color: #ffb6b9;
   color: darkblue; 
+  border-radius: 10px;
+  text-align: center;
   font-family: 'Times New Roman', Times, serif;
 }
 h2 {
