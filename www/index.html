@@ -14,10 +14,17 @@
     let ncmb = new NCMB(appKey, clientKey);
     // 本アプリで使うクラスの指定。const は定数の宣言。変更できない変数と思えば良い。
     const db = "country50";
-    var  list_n, name_n, regi_n, lang_n, arealt_n, areagt_n, gdplt_n, gdpgt_n = 0;
+    var list_n, name_n, regi_n, lang_n, arealt_n, areagt_n, gdplt_n, gdpgt_n = 0;
 
     function fetchAll() {
-      list_n, name_n, regi_n, lang_n, arealt_n, areagt_n, gdplt_n, gdpgt_n = 0;
+      list_n,
+      name_n,
+      regi_n,
+      lang_n,
+      arealt_n,
+      areagt_n,
+      gdplt_n,
+      gdpgt_n = 0;
       list_n = 1;
 
       let TestDataClass = ncmb.DataStore(db);
@@ -29,7 +36,14 @@
     }
 
     function searchName() {
-      list_n, name_n, regi_n, lang_n, arealt_n, areagt_n, gdplt_n, gdpgt_n = 0;
+      list_n,
+      name_n,
+      regi_n,
+      lang_n,
+      arealt_n,
+      areagt_n,
+      gdplt_n,
+      gdpgt_n = 0;
       name_n = 1;
 
       let TestDataClass = ncmb.DataStore(db);
@@ -42,7 +56,14 @@
     }
 
     function searchRegion() {
-      list_n, name_n, regi_n, lang_n, arealt_n, areagt_n, gdplt_n, gdpgt_n = 0;
+      list_n,
+      name_n,
+      regi_n,
+      lang_n,
+      arealt_n,
+      areagt_n,
+      gdplt_n,
+      gdpgt_n = 0;
       regi_n = 1;
 
       let TestDataClass = ncmb.DataStore(db);
@@ -55,7 +76,14 @@
     }
 
     function searchLanguage() {
-      list_n, name_n, regi_n, lang_n, arealt_n, areagt_n, gdplt_n, gdpgt_n = 0;
+      list_n,
+      name_n,
+      regi_n,
+      lang_n,
+      arealt_n,
+      areagt_n,
+      gdplt_n,
+      gdpgt_n = 0;
       lang_n = 1;
 
       let TestDataClass = ncmb.DataStore(db);
@@ -68,63 +96,203 @@
     }
 
     function searchAreaLT() {
-      list_n, name_n, regi_n, lang_n, arealt_n, areagt_n, gdplt_n, gdpgt_n = 0;
+      list_n,
+      name_n,
+      regi_n,
+      lang_n,
+      arealt_n,
+      areagt_n,
+      gdplt_n,
+      gdpgt_n = 0;
       arealt_n = 1;
 
       let TestDataClass = ncmb.DataStore(db);
       let area = parseInt($("#area").val());
       TestDataClass.lessThanOrEqualTo("countryarea", area)
-        .order("countryarea", false).fetchAll()
-        .then(function(results) {
-          showResults(results);
-        })
+      .order("countryarea", false).fetchAll()
+      .then(function(results) {
+        showResults(results);
+      })
     }
 
     function searchAreaGT() {
-      list_n, name_n, regi_n, lang_n, arealt_n, areagt_n, gdplt_n, gdpgt_n = 0;
+      list_n,
+      name_n,
+      regi_n,
+      lang_n,
+      arealt_n,
+      areagt_n,
+      gdplt_n,
+      gdpgt_n = 0;
       areagt_n = 1;
 
       let TestDataClass = ncmb.DataStore(db);
       let area = parseInt($("#area").val());
       TestDataClass.greaterThanOrEqualTo("countryarea", area)
-        .order("countryarea", false).fetchAll()
-        .then(function(results) {
-          showResults(results);
-        })
+      .order("countryarea", false).fetchAll()
+      .then(function(results) {
+        showResults(results);
+      })
     }
 
     function searchGDPLT() {
-      list_n, name_n, regi_n, lang_n, arealt_n, areagt_n, gdplt_n, gdpgt_n = 0;
+      list_n,
+      name_n,
+      regi_n,
+      lang_n,
+      arealt_n,
+      areagt_n,
+      gdplt_n,
+      gdpgt_n = 0;
       gdplt_n = 1;
 
       let TestDataClass = ncmb.DataStore(db);
       let gdp = parseInt($("#gdp").val());
       TestDataClass.lessThanOrEqualTo("countrygdp", gdp)
-        .order("countrygdp", false).fetchAll()
-        .then(function(results) {
-          showResults(results);
-        })
+      .order("countrygdp", false).fetchAll()
+      .then(function(results) {
+        showResults(results);
+      })
     }
 
     function searchGDPGT() {
-      list_n, name_n, regi_n, lang_n, arealt_n, areagt_n, gdplt_n, gdpgt_n = 0;
+      list_n,
+      name_n,
+      regi_n,
+      lang_n,
+      arealt_n,
+      areagt_n,
+      gdplt_n,
+      gdpgt_n = 0;
       gdpgt_n = 1;
 
       let TestDataClass = ncmb.DataStore(db);
       let gdp = parseInt($("#gdp").val());
       TestDataClass.greaterThanOrEqualTo("countrygdp", gdp)
-        .order("countrygdp", false).fetchAll()
-        .then(function(results) {
-          showResults(results);
-        })
+      .order("countrygdp", false).fetchAll()
+      .then(function(results) {
+        showResults(results);
+      })
     }
 
-    function sortAscending(){
+    function sortAscending() {
+      if (list_n == 1) {
+        fetchAll();
+        list_n = 0;
+      }
+      if (name_n == 1) {
+        searchName();
+        name_n = 0;
+      }
+      if (regi_n == 1) {
+        searchRegion();
+        regi_n = 0;
+      }
+      if (lang_n == 1) {
+        searchLanguage();
+        lang_n = 0;
+      }
+      if (arealt_n == 1) {
+        searchAreaLT();
+        arealt_n = 0;
+      }
+      if (areagt_n == 1) {
+        searchAreaGT();
+        areagt_n = 0;
+      }
+      if (gdplt_n == 1) {
+        searchGDPLT();
+        gdplt_n = 0;
+      }
+      if (gdpgt_n == 1) {
+        searchAreaGT();
+        gdpgt_n = 0;
+      }
 
     }
 
-    function sortDescending(){
-      
+    function sortDescending() {
+      if (list_n == 0) {
+        let TestDataClass = ncmb.DataStore(db);
+        let input = $("#city").val();
+        TestDataClass.order("countrygdp", true).fetchAll()
+          .then(function(results) {
+            showResults(results);
+          })
+        list_n = 1;
+      }
+      if (name_n == 0) {
+        let TestDataClass = ncmb.DataStore(db);
+        let name = $("#name").val();
+        TestDataClass.regularExpressionTo("countryname", name)
+          .order("countryname", true).fetchAll()
+          .then(function(results) {
+            showResults(results);
+          })
+        name_n = 1;
+      }
+      if (regi_n == 0) {
+        let TestDataClass = ncmb.DataStore(db);
+        let region = $("#region").val();
+        TestDataClass.regularExpressionTo("countryregion", region)
+          .order("countryregion", true).fetchAll()
+          .then(function(results) {
+            showResults(results);
+          })
+        regi_n = 1;
+      }
+      if (lang_n == 0) {
+        let TestDataClass = ncmb.DataStore(db);
+        let language = $("#language").val();
+        TestDataClass.regularExpressionTo("countrylanguage", language)
+          .order("countrygdp", true).fetchAll()
+          .then(function(results) {
+            showResults(results);
+          })
+        lang_n = 1;
+      }
+      if (arealt_n == 0) {
+        let TestDataClass = ncmb.DataStore(db);
+        let area = parseInt($("#area").val());
+        TestDataClass.lessThanOrEqualTo("countryarea", area)
+          .order("countryarea", true).fetchAll()
+          .then(function(results) {
+            showResults(results);
+          })
+        arealt_n = 1;
+      }
+      if (areagt_n == 0) {
+        let TestDataClass = ncmb.DataStore(db);
+        let area = parseInt($("#area").val());
+        TestDataClass.greaterThanOrEqualTo("countryarea", area)
+          .order("countryarea", true).fetchAll()
+          .then(function(results) {
+            showResults(results);
+          })
+        areagt_n = 1;
+      }
+      if (gdplt_n == 0) {
+        let TestDataClass = ncmb.DataStore(db);
+        let gdp = parseInt($("#gdp").val());
+        TestDataClass.lessThanOrEqualTo("countrygdp", gdp)
+          .order("countrygdp", true).fetchAll()
+          .then(function(results) {
+            showResults(results);
+          })
+        gdplt_n = 1;
+      }
+      if (gdpgt_n == 0) {
+        let TestDataClass = ncmb.DataStore(db);
+        let gdp = parseInt($("#gdp").val());
+        TestDataClass.greaterThanOrEqualTo("countrygdp", gdp)
+          .order("countrygdp", true).fetchAll()
+          .then(function(results) {
+            showResults(results);
+          })
+        gdpgt_n = 1;
+      }
+
+
     }
 
     function showResults(results) {
