@@ -14,84 +14,117 @@
     let ncmb = new NCMB(appKey, clientKey);
     // 本アプリで使うクラスの指定。const は定数の宣言。変更できない変数と思えば良い。
     const db = "country50";
+    var  list_n, name_n, regi_n, lang_n, arealt_n, areagt_n, gdplt_n, gdpgt_n = 0;
 
     function fetchAll() {
+      list_n, name_n, regi_n, lang_n, arealt_n, areagt_n, gdplt_n, gdpgt_n = 0;
+      list_n = 1;
+
       let TestDataClass = ncmb.DataStore(db);
       let input = $("#city").val();
       TestDataClass.order("countrygdp", false).fetchAll()
-        .then(function(results) {
-          showResults(results);
-        })
+      .then(function(results) {
+        showResults(results);
+      })
     }
 
     function searchName() {
+      list_n, name_n, regi_n, lang_n, arealt_n, areagt_n, gdplt_n, gdpgt_n = 0;
+      name_n = 1;
+
       let TestDataClass = ncmb.DataStore(db);
       let name = $("#name").val();
       TestDataClass.regularExpressionTo("countryname", name)
-        .order("countrygdp", false).fetchAll()
-        .then(function(results) {
-          showResults(results);
-        })
+      .order("countryname", false).fetchAll()
+      .then(function(results) {
+        showResults(results);
+      })
     }
 
     function searchRegion() {
+      list_n, name_n, regi_n, lang_n, arealt_n, areagt_n, gdplt_n, gdpgt_n = 0;
+      regi_n = 1;
+
       let TestDataClass = ncmb.DataStore(db);
       let region = $("#region").val();
       TestDataClass.regularExpressionTo("countryregion", region)
-      .order("countrygdp", false).fetchAll()
-        .then(function(results) {
-          showResults(results);
-        })
+      .order("countryregion", false).fetchAll()
+      .then(function(results) {
+        showResults(results);
+      })
     }
 
     function searchLanguage() {
+      list_n, name_n, regi_n, lang_n, arealt_n, areagt_n, gdplt_n, gdpgt_n = 0;
+      lang_n = 1;
+
       let TestDataClass = ncmb.DataStore(db);
       let language = $("#language").val();
       TestDataClass.regularExpressionTo("countrylanguage", language)
       .order("countrygdp", false).fetchAll()
-        .then(function(results) {
-          showResults(results);
-        })
+      .then(function(results) {
+        showResults(results);
+      })
     }
 
     function searchAreaLT() {
+      list_n, name_n, regi_n, lang_n, arealt_n, areagt_n, gdplt_n, gdpgt_n = 0;
+      arealt_n = 1;
+
       let TestDataClass = ncmb.DataStore(db);
       let area = parseInt($("#area").val());
       TestDataClass.lessThanOrEqualTo("countryarea", area)
-      .order("countryarea", false).fetchAll()
+        .order("countryarea", false).fetchAll()
         .then(function(results) {
           showResults(results);
         })
     }
 
     function searchAreaGT() {
+      list_n, name_n, regi_n, lang_n, arealt_n, areagt_n, gdplt_n, gdpgt_n = 0;
+      areagt_n = 1;
+
       let TestDataClass = ncmb.DataStore(db);
       let area = parseInt($("#area").val());
       TestDataClass.greaterThanOrEqualTo("countryarea", area)
-      .order("countryarea", false).fetchAll()
+        .order("countryarea", false).fetchAll()
         .then(function(results) {
           showResults(results);
         })
     }
 
-     function searchGDPLT() {
+    function searchGDPLT() {
+      list_n, name_n, regi_n, lang_n, arealt_n, areagt_n, gdplt_n, gdpgt_n = 0;
+      gdplt_n = 1;
+
       let TestDataClass = ncmb.DataStore(db);
       let gdp = parseInt($("#gdp").val());
       TestDataClass.lessThanOrEqualTo("countrygdp", gdp)
-      .order("countrygdp", false).fetchAll()
+        .order("countrygdp", false).fetchAll()
         .then(function(results) {
           showResults(results);
         })
     }
 
     function searchGDPGT() {
+      list_n, name_n, regi_n, lang_n, arealt_n, areagt_n, gdplt_n, gdpgt_n = 0;
+      gdpgt_n = 1;
+
       let TestDataClass = ncmb.DataStore(db);
       let gdp = parseInt($("#gdp").val());
       TestDataClass.greaterThanOrEqualTo("countrygdp", gdp)
-      .order("countrygdp", false).fetchAll()
+        .order("countrygdp", false).fetchAll()
         .then(function(results) {
           showResults(results);
         })
+    }
+
+    function sortAscending(){
+
+    }
+
+    function sortDescending(){
+      
     }
 
     function showResults(results) {
@@ -136,7 +169,7 @@
     <label for="gdp">GDPランク:</label>
     <input id="gdp" type="text" placeholder="例：「3」">
   </div>
-  <br><br>
+  <br>
   <div id="button">
     <button class="btn2" onclick="fetchAll()">🎌国リスト🎌</button>
     <br>
@@ -147,12 +180,16 @@
 
     <br>
     <button class="btn" onclick="searchAreaLT()">&lt 面積🔍</button>
-    　
     <button class="btn" onclick="searchAreaGT()">面積🔎 &gt</button>
     <br>
     <button class="btn" onclick="searchGDPLT()">&lt GDP🔍</button>
-    　
     <button class="btn" onclick="searchGDPGT()">GDP🔎 &gt</button>
+    <br>
+    <h3>並び替え</h3>
+    <button class="btn3" onclick="sortAscending()">👆昇順ソート</button>
+    <button class="btn3" onclick="sortDescending()">👇降順ソート</button>
+
+
   </div>
   <div id="message">message area</div>
 </body>
